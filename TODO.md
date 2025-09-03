@@ -1,0 +1,3 @@
+- [x] Fix Padding syntax in lib/home_screen.dart
+- [x] Add null check for image URL
+- [x] Test the app
