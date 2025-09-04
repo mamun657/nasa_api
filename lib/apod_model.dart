@@ -1,11 +1,9 @@
 // To parse this JSON data, do
-//
 //     final apodModel = apodModelFromJson(jsonString);
 
 import 'dart:convert';
 
 ApodModel apodModelFromJson(String str) => ApodModel.fromJson(json.decode(str));
-
 String apodModelToJson(ApodModel data) => json.encode(data.toJson());
 
 class ApodModel {
@@ -13,8 +11,8 @@ class ApodModel {
   DateTime? date;
   String? explanation;
   String? hdurl;
-  String? mediaType;
-  String? serviceVersion;
+  String? mediaType; // maps to "media_type"
+  String? serviceVersion; // maps to "service_version"
   String? title;
   String? url;
 
@@ -42,8 +40,9 @@ class ApodModel {
 
   Map<String, dynamic> toJson() => {
     "copyright": copyright,
-    "date":
-        "${date!.year.toString().padLeft(4, '0')}-${date!.month.toString().padLeft(2, '0')}-${date!.day.toString().padLeft(2, '0')}",
+    "date": date != null
+        ? "${date!.year.toString().padLeft(4, '0')}-${date!.month.toString().padLeft(2, '0')}-${date!.day.toString().padLeft(2, '0')}"
+        : null,
     "explanation": explanation,
     "hdurl": hdurl,
     "media_type": mediaType,
